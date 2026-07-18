@@ -1,8 +1,16 @@
-# NJU 红黑榜助手（Chrome 扩展）
+# NJU 红黑榜助手（Chrome 扩展 / 油猴脚本）
 
 在南京大学选课系统的教学班卡片中显示对应教师组的红黑榜评分，并可直接查看最近评价。
 
-## 本地安装
+## 油猴安装
+
+1. 在 Chrome 安装 [Tampermonkey](https://www.tampermonkey.net/)。
+2. 打开 [NJU 红黑榜助手安装脚本](https://raw.githubusercontent.com/GreenTeodoro839/NJU-Class-Extension/v0.1.0/njuclass.user.js)。
+3. 在 Tampermonkey 安装页确认安装，然后刷新已经打开的南京大学选课页面。
+
+> Chrome 扩展和油猴脚本功能相同，建议只启用其中一个。
+
+## Chrome 扩展本地安装
 
 1. 在 Chrome 打开 `chrome://extensions/`。
 2. 打开右上角“开发者模式”。
@@ -24,13 +32,13 @@
 
 ## 权限与隐私
 
-- 只在 `https://xk.nju.edu.cn/xsxkapp/*` 注入界面。
-- 只访问 `https://njuclass.zcec.top/*` 的公开课程与评价接口。
+- 两个版本都只在 `https://xk.nju.edu.cn/xsxkapp/*` 注入界面。
+- Chrome 扩展的主机权限和油猴脚本的 `@connect` 都只允许访问 `njuclass.zcec.top` 的公开课程与评价接口。
 - 不读取选课账号、登录令牌、课表或红黑榜登录信息，也不在插件中保存个人数据。
 
 ## 开发
 
-本扩展使用原生 JavaScript，无需构建。修改源码后，在 Chrome 扩展管理页重新加载即可。
+项目使用原生 JavaScript，无需构建。Chrome 扩展由 `manifest.json` 加载；油猴入口为 `njuclass.user.js`，跨域请求适配器为 `userscript-transport.js`。发布新的油猴版本时，需要同步递增脚本版本并更新其固定版本资源地址。
 
 ## 开源许可
 

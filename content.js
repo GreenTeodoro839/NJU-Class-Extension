@@ -10,6 +10,15 @@
 
   if (!buildCourseUrl || !findExactTeacherCandidate || !formatRating || !isValidCourseCode) return
 
+  const hasRequestTransport = typeof globalThis.NjuClassRequest === 'function'
+    || typeof globalThis.chrome?.runtime?.sendMessage === 'function'
+  if (!hasRequestTransport) return
+
+  const RUNTIME_MARKER = 'data-njuclass-helper-mounted'
+  if (document.documentElement.hasAttribute(RUNTIME_MARKER)) return
+  document.documentElement.setAttribute(RUNTIME_MARKER, '')
+  globalThis.NjuClassContentMounted = true
+
   const SITE_ORIGIN = 'https://njuclass.zcec.top'
   const MAX_CONCURRENT_REQUESTS = 4
   const EVALUATIONS_PAGE_SIZE = 5
@@ -65,9 +74,20 @@
   }
 
   function sendMessage(message) {
+    if (typeof globalThis.NjuClassRequest === 'function') {
+      return Promise.resolve().then(() => globalThis.NjuClassRequest(message))
+    }
+
+    const runtime = globalThis.chrome?.runtime
+    if (!runtime?.sendMessage) {
+      const error = new Error('插件后台暂时不可用')
+      error.code = 'extension_error'
+      return Promise.reject(error)
+    }
+
     return new Promise((resolve, reject) => {
-      chrome.runtime.sendMessage(message, (response) => {
-        if (chrome.runtime.lastError) {
+      runtime.sendMessage(message, (response) => {
+        if (runtime.lastError) {
           const error = new Error('插件后台暂时不可用')
           error.code = 'extension_error'
           reject(error)
@@ -894,17 +914,20 @@
     subtree: true,
   })
 
-  chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    if (message?.type !== 'njuclass:ping') return false
-    sendResponse({
-      ok: true,
-      cardCount: document.querySelectorAll(
-        '.njuclass-has-rating, .njuclass-has-row-rating',
-      ).length,
-      rowCount: document.querySelectorAll('.njuclass-has-row-rating').length,
+  const runtimeOnMessage = globalThis.chrome?.runtime?.onMessage
+  if (runtimeOnMessage?.addListener) {
+    runtimeOnMessage.addListener((message, sender, sendResponse) => {
+      if (message?.type !== 'njuclass:ping') return false
+      sendResponse({
+        ok: true,
+        cardCount: document.querySelectorAll(
+          '.njuclass-has-rating, .njuclass-has-row-rating',
+        ).length,
+        rowCount: document.querySelectorAll('.njuclass-has-row-rating').length,
+      })
+      return false
     })
-    return false
-  })
+  }
 
   scheduleScan()
 })()
