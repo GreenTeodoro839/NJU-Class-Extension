@@ -1,4 +1,4 @@
-(function installNjuClassUserscriptTransport() {
+;(function installNjuClassUserscriptTransport() {
   'use strict'
 
   const { isValidCourseCode, splitTeacherNames } = globalThis.NjuClassCore || {}

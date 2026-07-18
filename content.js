@@ -1,4 +1,4 @@
-(function runNjuClassExtension() {
+;(function runNjuClassExtension() {
   'use strict'
 
   const {

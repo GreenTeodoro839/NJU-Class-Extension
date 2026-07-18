@@ -1,4 +1,4 @@
-(function attachNjuClassCore(root, factory) {
+;(function attachNjuClassCore(root, factory) {
   const api = factory()
 
   if (typeof module === 'object' && module.exports) {

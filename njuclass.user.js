@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         NJU 红黑榜助手
 // @namespace    https://njuclass.zcec.top/
-// @version      0.1.0
+// @version      0.1.1
 // @description  在南京大学选课系统中显示 NJU 课程红黑榜的教师评价
 // @author       GreenTeodoro839
 // @license      MIT
@@ -23,7 +23,7 @@
 // @updateURL    https://git.nju.edu.cn/zhy9559/nju-class-extension/-/raw/userscript/njuclass.user.js
 // ==/UserScript==
 
-(function startNjuClassUserscript() {
+;(function startNjuClassUserscript() {
   'use strict'
 
   if (globalThis.NjuClassContentMounted) {
