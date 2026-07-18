@@ -2,7 +2,7 @@
 
 在南京大学选课系统的教学班卡片中显示对应教师组的红黑榜评分，并可直接查看最近评价。项目同时提供 Chrome 扩展和 Tampermonkey 油猴脚本，两端共用课程匹配、卡片、弹窗、排序、筛选和分页实现。
 
-Chrome 扩展和油猴脚本使用相同版本号，当前版本为 `0.1.4`。
+Chrome 扩展和油猴脚本使用相同版本号，当前版本为 `0.1.5`。
 
 ## Chrome 扩展本地安装
 
@@ -15,7 +15,7 @@ Chrome 扩展和油猴脚本使用相同版本号，当前版本为 `0.1.4`。
 ## 油猴安装
 
 1. 在 Chrome 安装 [Tampermonkey](https://www.tampermonkey.net/)。
-2. 打开 [NJU 红黑榜助手安装脚本](https://git.nju.edu.cn/zhy9559/nju-class-extension/-/raw/userscript/njuclass.user.js)。
+2. 打开 [NJU 红黑榜助手安装脚本](https://git.nju.edu.cn/zhy9559/nju-class-extension/-/raw/main/njuclass.user.js)。
 3. 在 Tampermonkey 安装页确认安装，然后刷新已经打开的南京大学选课页面。
 
 > 两个版本功能相同，建议只启用其中一个。
@@ -40,14 +40,13 @@ Chrome 扩展和油猴脚本使用相同版本号，当前版本为 `0.1.4`。
 
 ## 分支约定
 
-- `main`：Chrome 扩展与公共源码分支，维护公共 JS/CSS 和 Chrome 专用代码。
-- `userscript`：油猴发布分支，只维护 `njuclass.user.js` 和 `userscript-transport.js`。安装、自动更新和油猴专用请求适配器都来自该分支。
+项目只维护 `main` 分支，其中包含 Chrome 扩展、油猴安装脚本、公共实现和两端适配代码。
 
 ## 开发
 
-项目使用原生 JavaScript，无需构建。`core.js`、`content.js` 和 `content.css` 为两端公共实现；Chrome 使用 `main` 的 `background.js`，油猴使用 `userscript` 的 `userscript-transport.js`。
+项目使用原生 JavaScript，无需构建。`core.js`、`content.js` 和 `content.css` 为两端公共实现；Chrome 使用 `background.js`，油猴使用 `userscript-transport.js`，全部源码均在 `main` 维护。
 
-发布时同步递增 `main/manifest.json` 的 `version` 和 `userscript/njuclass.user.js` 的 `@version`，并创建同版本的 Git 标签。标签对应完整运行快照，油猴通过该标签加载公共资源与专用适配器；`main` 和 `userscript` 的分支内容仍按上述职责保持分离。
+发布时同步递增 `manifest.json` 的 `version` 和 `njuclass.user.js` 的 `@version`，并创建同版本的 Git 标签。标签对应完整运行快照，油猴通过该标签加载公共资源与专用适配器。
 
 ## 开源许可
 
