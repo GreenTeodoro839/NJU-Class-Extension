@@ -1,6 +1,16 @@
-# NJU 红黑榜助手（油猴脚本）
+# NJU 红黑榜助手
 
-在南京大学选课系统的教学班卡片中显示对应教师组的红黑榜评分，并可直接查看最近评价。
+在南京大学选课系统的教学班卡片中显示对应教师组的红黑榜评分，并可直接查看最近评价。项目同时提供 Chrome 扩展和 Tampermonkey 油猴脚本，两端共用课程匹配、卡片、弹窗、排序、筛选和分页实现。
+
+Chrome 扩展和油猴脚本使用相同版本号，当前版本为 `0.1.3`。
+
+## Chrome 扩展本地安装
+
+1. 在 Chrome 打开 `chrome://extensions/`。
+2. 打开右上角“开发者模式”。
+3. 点击“加载已解压的扩展程序”。
+4. 选择当前项目根目录（即 `manifest.json` 所在目录）。
+5. 刷新已经打开的南京大学选课页面。
 
 ## 油猴安装
 
@@ -8,7 +18,7 @@
 2. 打开 [NJU 红黑榜助手安装脚本](https://git.nju.edu.cn/zhy9559/nju-class-extension/-/raw/userscript/njuclass.user.js)。
 3. 在 Tampermonkey 安装页确认安装，然后刷新已经打开的南京大学选课页面。
 
-> Chrome 扩展源码位于 [`main` 分支](https://git.nju.edu.cn/zhy9559/nju-class-extension/-/tree/main)。两个版本功能相同，建议只启用其中一个。
+> 两个版本功能相同，建议只启用其中一个。
 
 ## 使用方式
 
@@ -24,13 +34,20 @@
 
 ## 权限与隐私
 
-- 只在 `https://xk.nju.edu.cn/xsxkapp/*` 注入界面。
-- `@connect` 只允许访问 `njuclass.zcec.top` 的公开课程与评价接口。
-- 不读取选课账号、登录令牌、课表或红黑榜登录信息，也不在脚本中保存个人数据。
+- 两个版本都只在 `https://xk.nju.edu.cn/xsxkapp/*` 注入界面。
+- Chrome 扩展的主机权限和油猴脚本的 `@connect` 都只允许访问 `njuclass.zcec.top` 的公开课程与评价接口。
+- 不读取选课账号、登录令牌、课表或红黑榜登录信息，也不保存个人数据。
+
+## 分支约定
+
+- `main`：唯一源码分支。公共 JS、CSS、Chrome 适配器和油猴适配器都在这里维护。
+- `userscript`：油猴安装发布分支，当前树只保留根目录的 `njuclass.user.js`。安装与自动更新地址始终指向该分支，不在这里开发业务逻辑。
 
 ## 开发
 
-项目使用原生 JavaScript，无需构建。油猴入口为 `njuclass.user.js`，跨域请求适配器为 `userscript-transport.js`。发布新版本时需要同步递增脚本的 `@version`，并让 `@require`、`@resource` 和图标引用对应的 NJU Git 版本标签，避免脚本管理器继续使用旧缓存。
+项目使用原生 JavaScript，无需构建。`core.js`、`content.js` 和 `content.css` 为两端公共实现；Chrome 使用 `background.js`，油猴使用 `userscript-transport.js`。
+
+发布时先在 `main` 同步递增 `manifest.json` 的 `version` 和 `njuclass.user.js` 的 `@version`，再为该源码提交创建同版本标签。油猴的 `@require`、`@resource` 和图标引用该标签，最后把 `main` 中的安装脚本原样发布到 `userscript`，从而避免外部资源缓存和两端代码漂移。
 
 ## 开源许可
 
