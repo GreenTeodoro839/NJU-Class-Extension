@@ -2,7 +2,7 @@
 
 在南京大学选课系统的教学班卡片中显示对应教师组的红黑榜评分，并可直接查看最近评价。项目同时提供 Chrome 扩展和 Tampermonkey 油猴脚本，两端共用课程匹配、卡片、弹窗、排序、筛选和分页实现。
 
-Chrome 扩展和油猴脚本使用相同版本号，当前版本为 `0.1.3`。
+Chrome 扩展和油猴脚本使用相同版本号，当前版本为 `0.1.4`。
 
 ## Chrome 扩展本地安装
 
@@ -40,14 +40,14 @@ Chrome 扩展和油猴脚本使用相同版本号，当前版本为 `0.1.3`。
 
 ## 分支约定
 
-- `main`：唯一源码分支。公共 JS、CSS、Chrome 适配器和油猴适配器都在这里维护。
-- `userscript`：油猴安装发布分支，当前树只保留根目录的 `njuclass.user.js`。安装与自动更新地址始终指向该分支，不在这里开发业务逻辑。
+- `main`：Chrome 扩展与公共源码分支，维护公共 JS/CSS 和 Chrome 专用代码。
+- `userscript`：油猴发布分支，只维护 `njuclass.user.js` 和 `userscript-transport.js`。安装、自动更新和油猴专用请求适配器都来自该分支。
 
 ## 开发
 
-项目使用原生 JavaScript，无需构建。`core.js`、`content.js` 和 `content.css` 为两端公共实现；Chrome 使用 `background.js`，油猴使用 `userscript-transport.js`。
+项目使用原生 JavaScript，无需构建。`core.js`、`content.js` 和 `content.css` 为两端公共实现；Chrome 使用 `main` 的 `background.js`，油猴使用 `userscript` 的 `userscript-transport.js`。
 
-发布时先在 `main` 同步递增 `manifest.json` 的 `version` 和 `njuclass.user.js` 的 `@version`，再为该源码提交创建同版本标签。油猴的 `@require`、`@resource` 和图标引用该标签，最后把 `main` 中的安装脚本原样发布到 `userscript`，从而避免外部资源缓存和两端代码漂移。
+发布时同步递增 `main/manifest.json` 的 `version` 和 `userscript/njuclass.user.js` 的 `@version`，并创建同版本的 Git 标签。标签对应完整运行快照，油猴通过该标签加载公共资源与专用适配器；`main` 和 `userscript` 的分支内容仍按上述职责保持分离。
 
 ## 开源许可
 
