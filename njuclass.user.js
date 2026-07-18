@@ -6,21 +6,21 @@
 // @author       GreenTeodoro839
 // @license      MIT
 // @match        https://xk.nju.edu.cn/xsxkapp/*
-// @icon         https://raw.githubusercontent.com/GreenTeodoro839/NJU-Class-Extension/v0.1.0/icons/icon-128.png
+// @icon         https://git.nju.edu.cn/zhy9559/nju-class-extension/-/raw/userscript/icons/icon-128.png
 // @grant        GM_xmlhttpRequest
 // @grant        GM_addStyle
 // @grant        GM_getResourceText
 // @connect      njuclass.zcec.top
 // @run-at       document-idle
 // @noframes
-// @require      https://raw.githubusercontent.com/GreenTeodoro839/NJU-Class-Extension/v0.1.0/core.js
-// @require      https://raw.githubusercontent.com/GreenTeodoro839/NJU-Class-Extension/v0.1.0/userscript-transport.js
-// @require      https://raw.githubusercontent.com/GreenTeodoro839/NJU-Class-Extension/v0.1.0/content.js
-// @resource     njuclassCSS https://raw.githubusercontent.com/GreenTeodoro839/NJU-Class-Extension/v0.1.0/content.css
-// @homepageURL  https://github.com/GreenTeodoro839/NJU-Class-Extension
-// @supportURL   https://github.com/GreenTeodoro839/NJU-Class-Extension/issues
-// @downloadURL  https://raw.githubusercontent.com/GreenTeodoro839/NJU-Class-Extension/main/njuclass.user.js
-// @updateURL    https://raw.githubusercontent.com/GreenTeodoro839/NJU-Class-Extension/main/njuclass.user.js
+// @require      https://git.nju.edu.cn/zhy9559/nju-class-extension/-/raw/userscript/core.js
+// @require      https://git.nju.edu.cn/zhy9559/nju-class-extension/-/raw/userscript/userscript-transport.js
+// @require      https://git.nju.edu.cn/zhy9559/nju-class-extension/-/raw/userscript/content.js
+// @resource     njuclassCSS https://git.nju.edu.cn/zhy9559/nju-class-extension/-/raw/userscript/content.css
+// @homepageURL  https://git.nju.edu.cn/zhy9559/nju-class-extension/-/tree/userscript
+// @supportURL   https://git.nju.edu.cn/zhy9559/nju-class-extension/-/issues
+// @downloadURL  https://git.nju.edu.cn/zhy9559/nju-class-extension/-/raw/userscript/njuclass.user.js
+// @updateURL    https://git.nju.edu.cn/zhy9559/nju-class-extension/-/raw/userscript/njuclass.user.js
 // ==/UserScript==
 
 (function startNjuClassUserscript() {
