@@ -1,6 +1,12 @@
 ;(function installNjuClassUserscriptTransport() {
   'use strict'
 
+  const currentLocation = globalThis.location
+  if (currentLocation && (
+    currentLocation.origin !== 'https://xk.nju.edu.cn'
+    || !currentLocation.pathname?.startsWith('/xsxkapp/')
+  )) return
+
   const { isValidCourseCode, splitTeacherNames } = globalThis.NjuClassCore || {}
   if (!isValidCourseCode || !splitTeacherNames) return
 

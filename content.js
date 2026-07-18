@@ -1,6 +1,12 @@
 ;(function runNjuClassExtension() {
   'use strict'
 
+  const currentLocation = globalThis.location
+  if (currentLocation && (
+    currentLocation.origin !== 'https://xk.nju.edu.cn'
+    || !currentLocation.pathname?.startsWith('/xsxkapp/')
+  )) return
+
   const {
     buildCourseUrl,
     findExactTeacherCandidate,
