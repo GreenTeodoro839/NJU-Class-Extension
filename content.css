@@ -1,0 +1,643 @@
+/* 选课系统教学班卡片原高 185px，评价条占用额外 34px。 */
+.course-jxb-container .jxb-item.njuclass-has-rating {
+  height: var(--njuclass-card-height, 219px) !important;
+  min-height: var(--njuclass-card-height, 219px) !important;
+}
+
+.course-jxb-container .jxb-item.njuclass-has-rating .njuclass-card-content {
+  height: var(--njuclass-content-height, 160.5px) !important;
+  min-height: var(--njuclass-content-height, 160.5px) !important;
+}
+
+.njuclass-inline,
+.njuclass-inline * {
+  box-sizing: border-box !important;
+}
+
+.njuclass-inline {
+  width: 100% !important;
+  height: 27px !important;
+  margin: 0 0 6px !important;
+  color: #5f5364 !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif !important;
+  font-size: 12px !important;
+  line-height: 1 !important;
+}
+
+.njuclass-inline-button,
+.njuclass-inline-status,
+.njuclass-inline-link {
+  display: flex !important;
+  width: 100% !important;
+  height: 27px !important;
+  align-items: center !important;
+  gap: 6px !important;
+  margin: 0 !important;
+  padding: 0 8px !important;
+  overflow: hidden !important;
+  border: 1px solid #dcc7e6 !important;
+  border-radius: 6px !important;
+  background: #faf6fc !important;
+  box-shadow: none !important;
+  color: #5f5364 !important;
+  font: inherit !important;
+  line-height: 25px !important;
+  text-align: left !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+}
+
+.njuclass-inline-button {
+  cursor: pointer !important;
+  appearance: none !important;
+}
+
+.njuclass-inline-button:hover,
+.njuclass-inline-link:hover {
+  border-color: #a760bd !important;
+  background: #f5ebf9 !important;
+  color: #5f5364 !important;
+}
+
+.njuclass-inline-button:focus-visible,
+.njuclass-inline-link:focus-visible {
+  outline: 2px solid #8f3ca6 !important;
+  outline-offset: 1px !important;
+}
+
+.njuclass-brand {
+  flex: 0 0 auto !important;
+  color: #7e258f !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.2px !important;
+}
+
+.njuclass-brand::before {
+  display: inline-block !important;
+  width: 5px !important;
+  height: 5px !important;
+  margin-right: 4px !important;
+  border-radius: 50% !important;
+  background: #8f3ca6 !important;
+  content: "" !important;
+  vertical-align: 1px !important;
+}
+
+.njuclass-rating-metric,
+.njuclass-loading-text,
+.njuclass-muted-text,
+.njuclass-error-text {
+  min-width: 0 !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.njuclass-rating-metric {
+  margin-left: auto !important;
+  color: #765426 !important;
+  font-weight: 600 !important;
+}
+
+.njuclass-summary-button[data-rating-tone="high"] .njuclass-rating-metric {
+  color: #247451 !important;
+}
+
+.njuclass-summary-button[data-rating-tone="low"] .njuclass-rating-metric {
+  color: #b13d4b !important;
+}
+
+.njuclass-chevron {
+  flex: 0 0 auto !important;
+  color: #9b6ca8 !important;
+  font-size: 17px !important;
+  line-height: 1 !important;
+}
+
+/* 公共、跨专业和体育页把教学班直接铺成表格行。 */
+.njuclass-inline.njuclass-inline--row {
+  width: fit-content !important;
+  min-width: 100px !important;
+  max-width: 100% !important;
+  height: 22px !important;
+  margin: 3px 0 0 !important;
+  font-size: 10px !important;
+}
+
+.njuclass-inline--row .njuclass-inline-button,
+.njuclass-inline--row .njuclass-inline-status,
+.njuclass-inline--row .njuclass-inline-link {
+  height: 22px !important;
+  gap: 3px !important;
+  padding: 0 5px !important;
+  border-radius: 4px !important;
+  line-height: 20px !important;
+}
+
+.njuclass-inline--row .njuclass-brand {
+  font-size: 10px !important;
+  letter-spacing: 0 !important;
+}
+
+.njuclass-inline--row .njuclass-brand::before {
+  width: 4px !important;
+  height: 4px !important;
+  margin-right: 3px !important;
+}
+
+.njuclass-inline--row .njuclass-rating-metric {
+  font-size: 10px !important;
+}
+
+.njuclass-inline--row .njuclass-chevron {
+  display: none !important;
+}
+
+.njuclass-inline--loading .njuclass-inline-status {
+  border-style: dashed !important;
+  background: #fbf9fc !important;
+}
+
+.njuclass-inline--loading .njuclass-loading-text::after {
+  display: inline-block !important;
+  width: 8px !important;
+  overflow: hidden !important;
+  animation: njuclass-ellipsis 1.2s steps(4, end) infinite !important;
+  content: "…" !important;
+  vertical-align: bottom !important;
+}
+
+.njuclass-inline--muted .njuclass-inline-status,
+.njuclass-inline--muted .njuclass-inline-link {
+  border-color: #ded9e1 !important;
+  background: #fafafa !important;
+  color: #777079 !important;
+}
+
+.njuclass-inline--error .njuclass-inline-button {
+  border-color: #ebc8cd !important;
+  background: #fff7f8 !important;
+}
+
+@keyframes njuclass-ellipsis {
+  from { width: 0; }
+  to { width: 8px; }
+}
+
+/* 评价弹窗 */
+.njuclass-modal-overlay,
+.njuclass-modal-overlay * {
+  box-sizing: border-box !important;
+}
+
+.njuclass-modal-overlay {
+  position: fixed !important;
+  z-index: 10000 !important;
+  inset: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 24px !important;
+  background: rgba(26, 18, 29, 0.42) !important;
+  backdrop-filter: blur(2px) !important;
+  overscroll-behavior: contain !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif !important;
+}
+
+.njuclass-modal {
+  display: flex !important;
+  width: min(540px, calc(100vw - 32px)) !important;
+  max-height: min(720px, calc(100vh - 48px)) !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(122, 55, 143, 0.22) !important;
+  border-radius: 14px !important;
+  background: #ffffff !important;
+  box-shadow: 0 22px 70px rgba(44, 18, 51, 0.28) !important;
+  color: #332d35 !important;
+  font-size: 14px !important;
+  line-height: 1.55 !important;
+  text-align: left !important;
+}
+
+.njuclass-modal-header {
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: space-between !important;
+  gap: 16px !important;
+  padding: 20px 22px 12px !important;
+  border: 0 !important;
+  background: linear-gradient(135deg, #fbf7fc 0%, #f5edf8 100%) !important;
+}
+
+.njuclass-modal-heading-group {
+  min-width: 0 !important;
+}
+
+.njuclass-modal-eyebrow {
+  margin-bottom: 4px !important;
+  color: #822f97 !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.7px !important;
+  line-height: 1.4 !important;
+}
+
+.njuclass-modal-title {
+  margin: 0 !important;
+  overflow: hidden !important;
+  color: #2f2731 !important;
+  font-size: 21px !important;
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+.njuclass-modal-subtitle {
+  margin-top: 4px !important;
+  overflow: hidden !important;
+  color: #726976 !important;
+  font-size: 12px !important;
+  line-height: 1.5 !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+.njuclass-modal-close {
+  display: grid !important;
+  width: 32px !important;
+  height: 32px !important;
+  flex: 0 0 32px !important;
+  place-items: center !important;
+  margin: 0 !important;
+  padding: 0 0 2px !important;
+  border: 0 !important;
+  border-radius: 8px !important;
+  background: rgba(126, 37, 143, 0.08) !important;
+  box-shadow: none !important;
+  color: #6b3a74 !important;
+  font: 400 24px/1 sans-serif !important;
+  cursor: pointer !important;
+  appearance: none !important;
+}
+
+.njuclass-modal-close:hover {
+  background: rgba(126, 37, 143, 0.16) !important;
+}
+
+.njuclass-modal-close:focus-visible,
+.njuclass-modal-link:focus-visible,
+.njuclass-modal-retry:focus-visible,
+.njuclass-modal-load-more:focus-visible,
+.njuclass-filter-select:focus-visible {
+  outline: 2px solid #8f3ca6 !important;
+  outline-offset: 2px !important;
+}
+
+.njuclass-modal-score {
+  display: flex !important;
+  align-items: center !important;
+  gap: 9px !important;
+  padding: 0 22px 15px !important;
+  border-bottom: 1px solid #eee8f0 !important;
+  background: linear-gradient(135deg, #fbf7fc 0%, #f5edf8 100%) !important;
+}
+
+.njuclass-stars {
+  display: inline-flex !important;
+  flex: 0 0 auto !important;
+  align-items: center !important;
+  gap: 2px !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+}
+
+.njuclass-star {
+  position: relative !important;
+  display: inline-block !important;
+  width: 1em !important;
+  height: 1em !important;
+  flex: 0 0 1em !important;
+}
+
+.njuclass-star-base,
+.njuclass-star-fill {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  display: block !important;
+  height: 1em !important;
+  font: inherit !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+}
+
+.njuclass-star-base {
+  width: 1em !important;
+  color: #d8d0da !important;
+}
+
+.njuclass-star-fill {
+  width: var(--njuclass-star-fill, 0%) !important;
+  overflow: hidden !important;
+  color: #e3a126 !important;
+}
+
+.njuclass-modal-stars {
+  gap: 3px !important;
+  font-size: 20px !important;
+}
+
+.njuclass-modal-score-value {
+  color: #3d303f !important;
+  font-size: 28px !important;
+  font-weight: 750 !important;
+  line-height: 1 !important;
+}
+
+.njuclass-modal-score-count {
+  margin-left: 3px !important;
+  color: #817684 !important;
+  font-size: 12px !important;
+}
+
+.njuclass-modal-filters {
+  display: flex !important;
+  flex: 0 0 auto !important;
+  align-items: center !important;
+  gap: 18px !important;
+  padding: 9px 22px !important;
+  border-bottom: 1px solid #eee8f0 !important;
+  background: #ffffff !important;
+}
+
+.njuclass-filter-field {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 7px !important;
+  margin: 0 !important;
+  color: #716775 !important;
+  font: 500 12px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif !important;
+}
+
+.njuclass-filter-label {
+  flex: 0 0 auto !important;
+}
+
+.njuclass-filter-select {
+  width: 128px !important;
+  height: 32px !important;
+  margin: 0 !important;
+  padding: 0 28px 0 9px !important;
+  border: 1px solid #d8cddd !important;
+  border-radius: 7px !important;
+  background-color: #ffffff !important;
+  box-shadow: none !important;
+  color: #493f4c !important;
+  font: 500 12px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif !important;
+  cursor: pointer !important;
+}
+
+.njuclass-filter-field:last-child .njuclass-filter-select {
+  width: 112px !important;
+}
+
+.njuclass-filter-select:hover {
+  border-color: #aa78b7 !important;
+}
+
+.njuclass-modal-body {
+  min-height: 0 !important;
+  flex: 1 1 auto !important;
+  overflow: auto !important;
+  padding: 16px 22px 20px !important;
+  background: #ffffff !important;
+  overscroll-behavior: contain !important;
+}
+
+.njuclass-modal-loading,
+.njuclass-modal-empty {
+  display: flex !important;
+  min-height: min(180px, 30vh) !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-direction: column !important;
+  gap: 9px !important;
+  color: #776e79 !important;
+  text-align: center !important;
+}
+
+.njuclass-modal-spinner {
+  width: 24px !important;
+  height: 24px !important;
+  border: 2px solid #e7d9eb !important;
+  border-top-color: #8f3ca6 !important;
+  border-radius: 50% !important;
+  animation: njuclass-spin 0.8s linear infinite !important;
+}
+
+.njuclass-modal-empty-icon {
+  display: grid !important;
+  width: 38px !important;
+  height: 38px !important;
+  place-items: center !important;
+  border-radius: 50% !important;
+  background: #f4eaf7 !important;
+  color: #8f3ca6 !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+}
+
+.njuclass-modal-empty strong {
+  color: #423a45 !important;
+  font-size: 15px !important;
+}
+
+.njuclass-modal-empty span {
+  font-size: 12px !important;
+}
+
+.njuclass-modal-list-meta {
+  margin-bottom: 10px !important;
+  color: #817784 !important;
+  font-size: 12px !important;
+}
+
+.njuclass-review-list {
+  display: grid !important;
+  gap: 10px !important;
+}
+
+.njuclass-review-item {
+  margin: 0 !important;
+  padding: 12px 14px !important;
+  border: 1px solid #ece5ee !important;
+  border-radius: 9px !important;
+  background: #fdfcfd !important;
+}
+
+.njuclass-review-header {
+  display: flex !important;
+  align-items: center !important;
+  gap: 7px !important;
+  margin-bottom: 7px !important;
+  font-size: 12px !important;
+  line-height: 1.4 !important;
+}
+
+.njuclass-review-rating {
+  color: #b67812 !important;
+  font-weight: 700 !important;
+}
+
+.njuclass-review-stars {
+  gap: 1px !important;
+  font-size: 14px !important;
+}
+
+.njuclass-review-semester {
+  color: #807683 !important;
+}
+
+.njuclass-review-ai {
+  margin-left: auto !important;
+  padding: 1px 5px !important;
+  border-radius: 4px !important;
+  background: #f0e5f3 !important;
+  color: #7b4687 !important;
+  font-size: 10px !important;
+}
+
+.njuclass-review-content {
+  display: -webkit-box !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  color: #423b44 !important;
+  font-size: 13px !important;
+  line-height: 1.65 !important;
+  overflow-wrap: anywhere !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-line-clamp: 5 !important;
+}
+
+.njuclass-review-actions {
+  display: flex !important;
+  min-height: 34px !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-direction: column !important;
+  gap: 5px !important;
+  margin-top: 14px !important;
+}
+
+.njuclass-review-feedback,
+.njuclass-review-done {
+  color: #817784 !important;
+  font-size: 11px !important;
+  line-height: 1.4 !important;
+}
+
+.njuclass-review-feedback:not(:empty) {
+  color: #a5404c !important;
+}
+
+.njuclass-review-done[hidden],
+.njuclass-modal-load-more[hidden] {
+  display: none !important;
+}
+
+.njuclass-modal-footer {
+  display: flex !important;
+  justify-content: flex-end !important;
+  gap: 9px !important;
+  padding: 13px 22px !important;
+  border-top: 1px solid #eee8f0 !important;
+  background: #fbfafb !important;
+}
+
+.njuclass-modal-link,
+.njuclass-modal-retry,
+.njuclass-modal-load-more {
+  display: inline-flex !important;
+  height: 34px !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 !important;
+  padding: 0 14px !important;
+  border: 1px solid #d8c7dc !important;
+  border-radius: 7px !important;
+  box-shadow: none !important;
+  font: 600 12px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  appearance: none !important;
+}
+
+.njuclass-modal-link--secondary,
+.njuclass-modal-retry,
+.njuclass-modal-load-more {
+  background: #ffffff !important;
+  color: #70417b !important;
+}
+
+.njuclass-modal-link--primary {
+  border-color: #8f3ca6 !important;
+  background: #8f3ca6 !important;
+  color: #ffffff !important;
+}
+
+.njuclass-modal-link:hover,
+.njuclass-modal-retry:hover,
+.njuclass-modal-load-more:hover:not(:disabled) {
+  filter: brightness(0.96) !important;
+  text-decoration: none !important;
+}
+
+.njuclass-modal-load-more:disabled {
+  cursor: wait !important;
+  opacity: 0.66 !important;
+}
+
+@keyframes njuclass-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 600px) {
+  .njuclass-modal-overlay {
+    align-items: flex-end !important;
+    padding: 0 !important;
+  }
+
+  .njuclass-modal {
+    width: 100vw !important;
+    max-height: 88vh !important;
+    border-radius: 14px 14px 0 0 !important;
+  }
+
+  .njuclass-modal-filters {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    gap: 10px !important;
+    padding: 10px 16px !important;
+  }
+
+  .njuclass-filter-field {
+    align-items: stretch !important;
+    flex-direction: column !important;
+    gap: 5px !important;
+  }
+
+  .njuclass-filter-select,
+  .njuclass-filter-field:last-child .njuclass-filter-select {
+    width: 100% !important;
+    height: 40px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .njuclass-modal-spinner,
+  .njuclass-loading-text::after {
+    animation: none !important;
+  }
+}
