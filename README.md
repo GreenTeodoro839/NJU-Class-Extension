@@ -30,7 +30,7 @@
 
 ## 开发
 
-项目使用原生 JavaScript，无需构建。油猴入口为 `njuclass.user.js`，跨域请求适配器为 `userscript-transport.js`。发布新版本时需要同步递增脚本的 `@version`，运行资源统一从 NJU Git 的 `userscript` 分支下载。
+项目使用原生 JavaScript，无需构建。油猴入口为 `njuclass.user.js`，跨域请求适配器为 `userscript-transport.js`。发布新版本时需要同步递增脚本的 `@version`，并让 `@require`、`@resource` 和图标引用对应的 NJU Git 版本标签，避免脚本管理器继续使用旧缓存。
 
 ## 开源许可
 
