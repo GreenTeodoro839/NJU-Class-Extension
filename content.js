@@ -16,14 +16,11 @@
 
   if (!buildCourseUrl || !findExactTeacherCandidate || !formatRating || !isValidCourseCode) return
 
-  const hasRequestTransport = typeof globalThis.NjuClassRequest === 'function'
-    || typeof globalThis.chrome?.runtime?.sendMessage === 'function'
-  if (!hasRequestTransport) return
+  if (typeof globalThis.chrome?.runtime?.sendMessage !== 'function') return
 
   const RUNTIME_MARKER = 'data-njuclass-helper-mounted'
   if (document.documentElement.hasAttribute(RUNTIME_MARKER)) return
   document.documentElement.setAttribute(RUNTIME_MARKER, '')
-  globalThis.NjuClassContentMounted = true
 
   const SITE_ORIGIN = 'https://njuclass.zcec.top'
   const MAX_CONCURRENT_REQUESTS = 4
@@ -80,10 +77,6 @@
   }
 
   function sendMessage(message) {
-    if (typeof globalThis.NjuClassRequest === 'function') {
-      return Promise.resolve().then(() => globalThis.NjuClassRequest(message))
-    }
-
     const runtime = globalThis.chrome?.runtime
     if (!runtime?.sendMessage) {
       const error = new Error('插件后台暂时不可用')

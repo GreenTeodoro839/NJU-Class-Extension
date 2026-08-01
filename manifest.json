@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "NJU 红黑榜助手",
-  "version": "0.1.6",
+  "version": "0.2.0",
   "description": "在南京大学选课系统中显示 NJU 课程红黑榜的教师评价。",
   "action": {
     "default_icon": {
@@ -38,15 +38,6 @@
         "content.css"
       ],
       "run_at": "document_idle"
-    },
-    {
-      "matches": [
-        "https://njuclass.zcec.top/*"
-      ],
-      "js": [
-        "site-marker.js"
-      ],
-      "run_at": "document_start"
     }
   ]
 }
